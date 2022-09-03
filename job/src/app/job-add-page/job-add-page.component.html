@@ -1,0 +1,60 @@
+<mat-card style="margin: 10px;">
+    <mat-card-title>Add Job Description: </mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="jobAddForm" class="row g-3">
+            <p class="col-md-3">
+                <mat-form-field appearance="fill">
+                    <mat-label for="job_number">Job Number</mat-label> 
+                    <input type="text" matInput required formControlName="job_number">
+                   
+                </mat-form-field>
+                
+            </p>
+            <p class="col-md-3">
+                <mat-form-field appearance="fill">
+                    <mat-label for="job_title">Job Title</mat-label> 
+                    <input type="text" matInput required formControlName="job_title">
+                    <mat-error *ngIf="jobAddForm.get('job_title').hasError('required')"> Job Number is Required</mat-error> 
+                </mat-form-field>
+            </p>
+            <p class="col-md-3">
+                <mat-form-field appearance="fill">
+                    <mat-label for="job_start_date">Job Start Date</mat-label> 
+                    <input type="date" matInput formControlName="job_start_date">
+                </mat-form-field>
+            </p>
+            <p class="col-md-3">
+                <mat-form-field appearance="fill">
+                    <mat-label for="job_close_date">Job Close Date</mat-label> 
+                    <input type="date" matInput formControlName="job_close_date">
+                </mat-form-field>
+            </p>
+            <p class="col-md-2">
+                <mat-form-field appearance="fill">
+                    <mat-label for="experience_required">Experience Required</mat-label> 
+                    <mat-select formControlName="experience_required" placeholder="Job Type">
+                        <mat-option value="Y"> Yes  </mat-option>                         
+                        <mat-option value="N"> No  </mat-option> 
+                  </mat-select>
+                </mat-form-field>
+            </p>
+            <p class="col-md-2">
+                <mat-form-field appearance="fill">
+                    <mat-label for="number_of_openings">Number of Openings</mat-label> 
+                    <input type="number" matInput formControlName="number_of_openings">
+                </mat-form-field>
+            </p>
+            <p class="col-md-8">
+                <mat-form-field appearance="fill">
+                    <mat-label for="job_notes">Job Notes</mat-label> 
+                    <input type="text" matInput formControlName="job_notes">
+                </mat-form-field>
+            </p>
+            <div class="footer">
+                <button style="margin-right: 10px;"  mat-raised-button color="primary" mat-button (click)="onSubmit()">Save</button>
+                <button mat-button routerLink="/jobs">Cancel</button>
+            </div>
+
+        </form>
+    </mat-card-content>
+</mat-card>

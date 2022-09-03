@@ -1,1 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.header {
+    background-color: #004891;
+    color: white;
+    padding: 5px;
+    text-align: center;
+}
+.container {
+    position: relative;
+    text-align: right;
+    margin-bottom: 7px;
+}
+.material-icons { 
+    font-size: 18px;
+    cursor: pointer;
+}
+.add {
+    background-color: #ff7300!important;
+}
+.edit {
+    color: #0000FF;
+}
+.delete {
+    color: #ff0008;
+}
+.mat-table {
+    border: 1px solid;
+}
+.mat-header-row {
+    background-color: lightgray;
+}
+.right-aligned {
+  text-align: right;
+  justify-content: flex-end;
+}
