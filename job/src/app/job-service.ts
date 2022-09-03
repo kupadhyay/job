@@ -26,7 +26,7 @@ import { Observable } from 'rxjs';
     }
 
     updateJob(id, jobObj) : Observable<any> {
-        return this.httpClient.put(this.baseUrl, id, jobObj)
+        return this.httpClient.put(this.baseUrl + id, jobObj)
     }
 
     deleteJob(id) : Observable<any> {

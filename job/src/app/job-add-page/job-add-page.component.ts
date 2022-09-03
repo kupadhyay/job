@@ -19,6 +19,7 @@ export class JobAddPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.jobAddForm = this.formBuilder.group({
+      id:[],
       job_number: [],
       job_title: [],
       job_start_date : [],
@@ -38,17 +39,27 @@ export class JobAddPageComponent implements OnInit {
 
   editRequest(id) {
     this.jobService.getJobById(id).subscribe(data => {
-      this.jobAddForm.patchValue(data)
+      this.jobAddForm.patchValue(data);
+      this.jobAddForm.patchValue({id: id})
     })
 
   }
   onSubmit() {
     console.log(this.jobAddForm.value);
     if(this.jobAddForm.valid) {
-      this.jobService.addJob(this.jobAddForm.value).subscribe(res => {
-        this.toastrService.success("Job Added successfully");
-        this.router.navigate(["jobs"]);
-      })
+
+      if(this.jobAddForm.value.id) { //edit case
+        this.jobService.updateJob(this.jobAddForm.value.id, this.jobAddForm.value).subscribe(res => {
+          this.toastrService.success("Job Updated successfully");
+          this.router.navigate(["jobs"]);
+        })
+      } else { // add case
+        this.jobService.addJob(this.jobAddForm.value).subscribe(res => {
+          this.toastrService.success("Job Added successfully");
+          this.router.navigate(["jobs"]);
+        })
+      }
+      
     }
   }
 
